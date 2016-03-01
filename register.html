@@ -1,0 +1,326 @@
+<html>
+    <head> <header><h3><b>Registration Page</b></h3></header>
+    <style>
+    
+        #wrapper{
+                width:1000px;
+                height:1200px;
+                margin:auto;
+                margin-top:50px;
+                margin-left:120px;
+                border-style:solid ;
+                border-radius: 10px;
+                border-width:3px;
+                border-color:mediumorchid;
+                background-color:mediumorchid;
+                padding-top:15px;
+        }
+        #inner{
+                width:1000px;
+                margin-top:27px;
+                background-color: whitesmoke;
+                height:1145px;
+                border-bottom-left-radius: 10px;
+                border-bottom-right-radius: 10px;  
+        }
+        #user{
+                font-family: monospace;
+                color: white;
+                font-size: 2em;
+        }
+        label{
+            font-size: 15px;
+            font-stretch: extra-condensed;
+            width: 400px;
+            margin-left:100px;
+            font-family: monospace;
+        }
+        .submit1{
+        width: 200px;
+        height: 45px;
+        border-radius:10px;
+        margin-left: 230px; 
+        margin-top: 30px;
+        margin-bottom: 300px;
+        font-family:monospace;
+        font-size: 13px;
+        background-color: white;
+    } 
+        input{
+            margin-top: 20px;
+            width:250px;
+            height:30px;
+        }
+        td{
+            margin-left: 20px;  
+        }
+        textarea{
+            margin-top: 20px;
+        }
+        select{
+            margin-top: 20px;
+        }
+        #2{
+            margin-top: 20px;
+            
+        }
+        #para{
+            display: none;
+            font-family: monospace;
+            width:300px;
+            padding:8px;
+            border-style:solid;
+            border-color: black;
+            background-color: blueviolet;
+            color: aliceblue;
+        }
+        #meter{
+            width:300px;
+        }
+        #area{
+            margin-left: 100px;
+        }
+        p{
+            margin-left: 100px;
+            font-family: monospace;
+            font-size: 15px;
+            font-stretch: extra-condensed;
+        }
+        
+    </style>  
+    </head>
+   
+<body>
+    <div id="wrapper">
+        <center><span id="user">Registration Form</span></center>
+      <div id="inner">
+
+<form>
+          <table>
+              <tr>
+                  <td>
+                      <label>First Name</label>
+                  </td>
+                  <td>
+                      <input type="text" name="userid"/>
+                  </td>      
+              </tr>
+              <tr>
+                  <td>
+                      <label>Last Name</label>
+                  </td>
+                  <td>
+                      <input type="text" name="userid"/>
+                  </td>      
+              </tr>
+              <tr>
+                  <td>
+                      <label>Date of Birth</label>
+                  </td>
+                  <td>
+                      <input type="date"  name="dob"/>
+                  </td>      
+              </tr>
+              <tr>
+                  <td>
+                      <label>Email Address</label>
+                  </td>
+                  <td>
+                      <input type="email" name="email" id="email" value=""/>
+                  </td>      
+              </tr>
+              <tr>
+                  <td>
+                      <label>Password</label>
+                  </td>
+                  <td>
+                      <input type="password" name="password" value="" id="password" onKeyUp="validatePassword();"/>
+                  </td>
+                  <td>
+                      <meter id="meter" value="0" min="0" max="20"></meter><br>
+                  </td>
+                   <td>
+                       <span id="passstrength"></span>
+                   </td>   
+                      
+                      <script>
+                            function validatePassword(){
+                                var password = document.getElementById("password").value;
+                                var passwordStrength = getPasswordStrength(password);
+                                var strengthText = "";
+
+                                if(passwordStrength < 7)
+                                    {
+                                        document.getElementById('para').style.display = "block";
+                                    }
+                                else if(passwordStrength < 10)
+                                    {
+                                        strengthText = "Weak";
+                                        document.getElementById('para').style.display = "none";
+                                    }
+                                else if(passwordStrength < 13)
+                                    {
+                                        strengthText = "Medium";
+                                        document.getElementById('para').style.display = "none";
+                                    }
+                                else if(passwordStrength < 17)
+                                    {
+                                        strengthText = "Strong";
+                                        document.getElementById('para').style.display = "none";
+                                    }
+                                else if(passwordStrength > 20)
+                                    {
+                                        document.getElementById('para').style.display = "block";
+                                    }
+                                else{
+                                         strengthText = "Very Strong";
+                                         document.getElementById('para').style.display = "none";
+                                }
+
+                                document.getElementById("passstrength").innerHTML = strengthText;
+
+                                document.getElementById("meter").value = passwordStrength;
+                                console.log(password);
+                            }
+                            
+                           function getPasswordStrength(password)
+                          {
+                              var email = document.getElementById("email").value;
+                              if (password.length < 7){
+                                  return 0;
+                              }
+                              else if(password.length > 20){
+                                  return 0;
+                              }
+                              else if(!password.match(/[a-zA-Z]/g) || (password.match(/[a-zA-Z]/g) && password.match(/[a-zA-Z]/g).length < 4)) {
+                                  return 0;
+                              }
+                              else if(!password.match(/[!#$%]/g) || (password.match(/[!#$%]/g) && password.match(/[!#$%]/g).length < 1)) {
+                                  return 0;
+                              }
+                              else if(!password.match(/[0-9]/g) || (password.match(/[0-9]/g) && password.match(/[0-9]/g).length < 1)) {
+                                  return 0;
+                              }
+                              else if(password.match(/\s/g)){
+                                  return 0;
+                              }
+                              else if(password === email){
+                                  return 0;
+                              }
+                            else{
+                                return password.length;
+                            }  
+                          }
+                  </script>  
+              </tr>
+              <tr>
+                  <td>
+                      <label>Confirm Password</label>
+                  </td>
+                  <td>
+                      <input type="password" name="passwordConfirm"/>
+                  </td>
+                  <td>
+                      <p id="para">Must be between 7-20 characters in length and include 4 alpha characters; 1 numeric character (0,9) or 1 special character(!,#,$,%). The password is case sensitive and must not contain spaces or be the same as your userID</p>
+                  </td>
+              </tr>
+              <tr>
+                  <td>
+                      <label>Security Question 1</label>
+                  </td>
+                  <td>
+                      <select>
+                          <option value="question1">Sum of 2+3</option>
+                          <option value="question2">Sum of 100+ 200</option>
+                          <option value="question3">23 x 100 =</option>
+                          <option value="question4">Capital of India?</option>
+                          <option value="question5">Capital of USA></option>
+                      </select>
+                  </td>      
+              </tr>
+              <tr>
+                  <td>
+                      <label>Security Answer 1</label>
+                  </td>
+                  <td>
+                      <input type="text"  name="security"/>
+                  </td>      
+              </tr>
+              <tr>
+                  <td>
+                      <label>Security Question 2</label>
+                  </td>
+                  <td>
+                      <select>
+                          <option value="question1">Sum of 2+3</option>
+                          <option value="question2">Sum of 100+ 200</option>
+                          <option value="question3">23 x 100 =</option>
+                          <option value="question4">Capital of India?</option>
+                          <option value="question5">Capital of USA></option>
+                      </select>
+                  </td>      
+              </tr>
+              <tr>
+                  <td>
+                      <label>Security Answer 2</label>
+                  </td>
+                  <td>
+                      <input type="text"  name="security2"/>
+                  </td>      
+              </tr>
+              <tr>
+                  <td>
+                      <label>Mobile</label>
+                  </td>
+                  <td>
+                      <input type="tel"  name="tel"/>
+                  </td>      
+              </tr>
+              <tr>
+                  <td>
+                      <label>Contact Address</label>
+                  </td>
+                  <td>
+                      <textarea rows="4" cols="50" name="comment"></textarea>  
+                  </td>      
+              </tr>
+              <tr>
+                  <td>
+                      <label>SSN</label>
+                  </td>
+                  <td>
+                      <input type="text" name="SSN"/>
+                  </td>      
+              </tr>
+              <tr>
+                  <td>
+                      <label>Local DOB</label>
+                  </td>
+                  <td>
+                      <input type="datetime-local" name="localdob"/>
+                  </td>      
+              </tr>
+              <tr>
+                  <td>
+                      <label>Credit Card Number</label>
+                  </td>
+                  <td>
+                      <input type="text" name="credit"/>
+                  </td>      
+              </tr>
+              
+      </table>
+    <br>
+    <p>Areas you may be interested in, please select one or more</p>
+    <textarea id="area" rows="7" cols="100" name="comment"></textarea> 
+    <br>
+    <br>
+
+          <input class="submit1" type="submit" value="Register" />
+          <input class="submit1" type="submit" value="Cancel" />
+
+</form>
+      </div>
+    </div>  
+</body>    
+</html>
