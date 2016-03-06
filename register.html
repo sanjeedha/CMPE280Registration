@@ -155,27 +155,7 @@
 
 </head>
 <script>
-    function SessionStore() {
-        var fname = document.getElementById("name").value;
-        sessionStorage.setItem("Name", fname);
-        var dob = document.getElementById("dob").value;
-        sessionStorage.setItem("Date of Birth", dob);
-        var email = document.getElementById("email").value;
-        sessionStorage.setItem("Email", email);
-        var password = document.getElementById("password").value;
-        sessionStorage.setItem("password", password);
-        var security1 = document.getElementById("question1").value;
-        sessionStorage.setItem("security1", security1);
-        var security2 = document.getElementById("question2").value;
-        sessionStorage.setItem("security2", security2);
-        var tel = document.getElementById("tel").value;
-        sessionStorage.setItem("telephone", tel);
-        var ssn = document.getElementById("ssn").value;
-        sessionStorage.setItem("ssn", ssn);
-        var address = document.getElementById("address").value;
-        sessionStorage.setItem("address", address);
-        var localdob = document.getElementById("localdob").value;
-        sessionStorage.setItem("localdob", localdob);
+    -
     }
 </script>
 
@@ -183,7 +163,7 @@
     <div style="width: 100%;">
         <div style="float:left; width: 15%">
             <div id="hifi">
-                <img src="images.gif" width="400px" height="500px" />
+                <img src="image.gif" width="400px" height="500px" />
             </div>
         </div>
         <div style="float:right;width:85%">
@@ -211,7 +191,7 @@
                     <div>
                         <p class="dob-help">Please enter your Date of Birth.</p>
                     </div>
-                    <input type="password" id="password" class="password" placeholder="Password" onKeyUp="validatePassword();">
+                    <input type="password" id="password" class="password" placeholder="Password" method="post" onKeyUp="validatePassword();">
                     <div>
                         <p class="pass-help">Please enter Password.</p>
                     </div>
@@ -269,6 +249,8 @@
                                 return password.length;
                             }
                         }
+                       
+
                     </script>
                     <p id="para">Must be between 7-20 characters in length and include 4 alpha characters; 1 numeric character (0,9) or 1 special character(!,#,$,%). The password is case sensitive and must not contain spaces or be the same as your userID</p>
 
@@ -334,7 +316,7 @@
                     </div>
                     <input type="text" id="ssn" class="ssn" placeholder="SSN" pattern="\d{3}-?\d{2}-?\d{4}">
                     <div>
-                        <p class="ssn-help">Please enter SSN.</p>
+                        <p class="ssn-help">Please enter SSN in the format XXX-XX-XXXX.</p>
                     </div>
 
                     <input type="datetime-local" id="localdob" class="local" placeholder="Local Date of Birth">
